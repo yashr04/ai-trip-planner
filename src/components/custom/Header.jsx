@@ -195,7 +195,7 @@ function Header() {
 
   return (
     <div className="p-3 shadow-sm flex justify-between items-center px-5 sticky top-0 bg-white z-10">
-      <a href="http://localhost:5173" className="flex items-center gap-2">
+      <a href="https://ai-trip-planner-vnmr.vercel.app" className="flex items-center gap-2">
         <img src='/logo.svg' className="h-8 w-auto" />
         <span className="text-xl font-bold">AI Trip Planner</span>
       </a>
