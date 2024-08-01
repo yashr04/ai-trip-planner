@@ -44,7 +44,7 @@ function Header() {
   const handleLogout = () => {
     googleLogout();
     localStorage.clear();
-    window.location.href = 'http://localhost:5173/';
+    window.location.href = 'https://ai-trip-planner-vnmr.vercel.app/';
   };
 
   return (
