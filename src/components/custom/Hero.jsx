@@ -85,11 +85,11 @@
 //   return (
 //     <>
 //       <div className="relative flex flex-col items-center mx-auto gap-12 py-6 px-4 max-w-screen-xl">
-//         <h1 className="font-extrabold text-6xl text-center leading-tight text-gray-900 mb-6">
+//         <h1 className="font-extrabold text-4xl md:text-6xl text-center leading-tight text-gray-900 mb-6">
 //           <span className="text-[#f56551]">Discover Your Next Adventure with AI:</span><br /> 
 //           Personalized Itineraries at Your Fingertips
 //         </h1>
-//         <p className="text-xl text-gray-600 text-center max-w-2xl mb-8">
+//         <p className="text-lg md:text-xl text-gray-600 text-center max-w-2xl mb-8">
 //           Your personal trip planner and travel curator, creating custom itineraries tailored to your interests and budget.
 //         </p>
 //         <div className="flex flex-col items-center md:flex-row md:gap-8">
@@ -120,7 +120,7 @@
 //           </div>
 //         </div>
 //         <div className="mt-10 max-w-screen-md mx-auto">
-//           <h2 className="font-bold text-3xl text-center mb-4">Watch How It Works</h2>
+//           <h2 className="font-bold text-2xl md:text-3xl text-center mb-4">Watch How It Works</h2>
 //           <div className="relative w-full h-0" style={{ paddingBottom: '56.25%' }}>
 //             <iframe 
 //               className="absolute top-0 left-0 w-full h-full" 
@@ -151,7 +151,7 @@
 //       </div>
       
 //       <div id="contact-us" className="relative flex flex-col items-center mx-auto gap-8 py-16 px-4 max-w-screen-md bg-gray-100 mt-16 rounded-lg shadow-lg">
-//         <h2 className="font-bold text-3xl text-center mb-6">Contact Us</h2>
+//         <h2 className="font-bold text-2xl md:text-3xl text-center mb-6">Contact Us</h2>
 //         <form className="w-full max-w-lg" onSubmit={handleSubmit}>
 //           <div className="mb-4">
 //             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
@@ -203,8 +203,8 @@
 //               Send Message
 //             </Button>
 //             <a href="https://www.linkedin.com/in/yashraj04/" target="_blank" rel="noopener noreferrer">
-//           <FaLinkedin className="text-4xl text-[#0072b1] hover:text-[#005682] transition" />
-//         </a>
+//               <FaLinkedin className="text-4xl text-[#0072b1] hover:text-[#005682] transition" />
+//             </a>
 //           </div>
 //           {formStatus && <p className="mt-4 text-center text-sm text-red-500">{formStatus}</p>}
 //         </form>
@@ -216,6 +216,8 @@
 // }
 
 // export default Hero;
+
+
 
 
 
@@ -310,11 +312,11 @@ function Hero() {
   return (
     <>
       <div className="relative flex flex-col items-center mx-auto gap-12 py-6 px-4 max-w-screen-xl">
-        <h1 className="font-extrabold text-4xl md:text-6xl text-center leading-tight text-gray-900 mb-6">
+        <h1 className="font-extrabold text-4xl md:text-6xl text-center leading-tight text-gray-900 dark:text-white mb-6">
           <span className="text-[#f56551]">Discover Your Next Adventure with AI:</span><br /> 
           Personalized Itineraries at Your Fingertips
         </h1>
-        <p className="text-lg md:text-xl text-gray-600 text-center max-w-2xl mb-8">
+        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 text-center max-w-2xl mb-8">
           Your personal trip planner and travel curator, creating custom itineraries tailored to your interests and budget.
         </p>
         <div className="flex flex-col items-center md:flex-row md:gap-8">
@@ -335,17 +337,17 @@ function Hero() {
         <div className="flex flex-wrap justify-center gap-8 mt-10">
           <div className="text-center max-w-xs">
             <img src="/picture1.png" alt="Picture 1" className="w-16 h-16 mx-auto mb-4" />
-            <h3 className="font-bold text-lg">AI-Powered Planning</h3>
-            <p className="text-gray-600">Get personalized itineraries crafted by our advanced AI algorithms.</p>
+            <h3 className="font-bold text-lg text-gray-900 dark:text-white">AI-Powered Planning</h3>
+            <p className="text-gray-600 dark:text-gray-300">Get personalized itineraries crafted by our advanced AI algorithms.</p>
           </div>
           <div className="text-center max-w-xs">
             <img src="/picture2.png" alt="Picture 2" className="w-26 h-16 mx-auto mb-4" />
-            <h3 className="font-bold text-lg">Budget-Friendly Options</h3>
-            <p className="text-gray-600">Find the best deals and budget-friendly travel plans.</p>
+            <h3 className="font-bold text-lg text-gray-900 dark:text-white">Budget-Friendly Options</h3>
+            <p className="text-gray-600 dark:text-gray-300">Find the best deals and budget-friendly travel plans.</p>
           </div>
         </div>
         <div className="mt-10 max-w-screen-md mx-auto">
-          <h2 className="font-bold text-2xl md:text-3xl text-center mb-4">Watch How It Works</h2>
+          <h2 className="font-bold text-2xl md:text-3xl text-center text-gray-900 dark:text-white mb-4">Watch How It Works</h2>
           <div className="relative w-full h-0" style={{ paddingBottom: '56.25%' }}>
             <iframe 
               className="absolute top-0 left-0 w-full h-full" 
@@ -361,8 +363,8 @@ function Hero() {
           <DialogContent>
             <DialogHeader>
               <DialogDescription>
-                <h2 className="font-bold text-lg text-center">Sign In with Google</h2>
-                <p className="text-center mb-4">Sign In to the app with Google authentication securely</p>
+                <h2 className="font-bold text-lg text-center text-gray-900 dark:text-white">Sign In with Google</h2>
+                <p className="text-center mb-4 text-gray-600 dark:text-gray-300">Sign In to the app with Google authentication securely</p>
                 <Button
                   onClick={login}
                   className="w-full flex gap-4 items-center justify-center bg-orange-700 text-white py-3 rounded-full hover:bg-orange-900 transition"
@@ -375,15 +377,15 @@ function Hero() {
         </Dialog>
       </div>
       
-      <div id="contact-us" className="relative flex flex-col items-center mx-auto gap-8 py-16 px-4 max-w-screen-md bg-gray-100 mt-16 rounded-lg shadow-lg">
-        <h2 className="font-bold text-2xl md:text-3xl text-center mb-6">Contact Us</h2>
+      <div id="contact-us" className="relative flex flex-col items-center mx-auto gap-8 py-16 px-4 max-w-screen-md bg-gray-100 dark:bg-gray-800 mt-16 rounded-lg shadow-lg">
+        <h2 className="font-bold text-2xl md:text-3xl text-center text-gray-900 dark:text-white mb-6">Contact Us</h2>
         <form className="w-full max-w-lg" onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+            <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" htmlFor="name">
               Name
             </label>
             <input 
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+              className="shadow appearance-none border dark:border-gray-600 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900 leading-tight focus:outline-none focus:shadow-outline" 
               id="name" 
               name="name"
               type="text" 
@@ -393,11 +395,11 @@ function Hero() {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+            <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" htmlFor="email">
               Email
             </label>
             <input 
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+              className="shadow appearance-none border dark:border-gray-600 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900 leading-tight focus:outline-none focus:shadow-outline" 
               id="email" 
               name="email"
               type="email" 
@@ -407,11 +409,11 @@ function Hero() {
             />
           </div>
           <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
+            <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" htmlFor="message">
               Message
             </label>
             <textarea 
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+              className="shadow appearance-none border dark:border-gray-600 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900 leading-tight focus:outline-none focus:shadow-outline" 
               id="message" 
               name="message"
               rows="5" 
@@ -431,7 +433,7 @@ function Hero() {
               <FaLinkedin className="text-4xl text-[#0072b1] hover:text-[#005682] transition" />
             </a>
           </div>
-          {formStatus && <p className="mt-4 text-center text-sm text-red-500">{formStatus}</p>}
+          {formStatus && <p className="mt-4 text-center text-sm text-red-500 dark:text-red-400">{formStatus}</p>}
         </form>
       </div>
       <div className="flex justify-center mt-10">

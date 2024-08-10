@@ -22,6 +22,7 @@
 // function CreateTrip() {
 //   const [place, setPlace] = useState(null);
 //   const [formData, setFormData] = useState({});
+//   const [noOfDays, setNoOfDays] = useState('');
 //   const [openDialog, setOpenDialog] = useState(false);
 //   const [loading, setLoading] = useState(false);
 
@@ -33,6 +34,14 @@
 //       [name]: value,
 //     }));
 //     console.log(`Updated ${name}:`, value);
+//   };
+
+//   const handleDaysInputChange = (e) => {
+//     const value = e.target.value;
+//     if (/^\d*$/.test(value)) { // Check if the value is a positive number
+//       setNoOfDays(value);
+//       handleInputChange("noOfDays", value);
+//     }
 //   };
 
 //   useEffect(() => {
@@ -138,8 +147,9 @@
 //           </h2>
 //           <Input
 //             placeholder={"Ex. 3"}
-//             type="number"
-//             onChange={(e) => handleInputChange("noOfDays", e.target.value)}
+//             type="text"
+//             value={noOfDays}
+//             onChange={handleDaysInputChange}
 //           />
 //         </div>
 //       </div>
@@ -217,6 +227,9 @@
 // }
 
 // export default CreateTrip;
+
+
+
 
 
 
@@ -346,14 +359,16 @@ function CreateTrip() {
 
   return (
     <div className="sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 mt-10">
-      <h2 className="font-bold text-3xl text-gray-900">Tell us your Travel Preferences</h2>
-      <p className="mt-3 text-gray-600 text-xl">
+      <h2 className="font-bold text-3xl text-gray-900 dark:text-gray-100">
+        Tell us your Travel Preferences
+      </h2>
+      <p className="mt-3 text-gray-600 dark:text-gray-400 text-xl">
         Just provide some basic information, and our trip planner will generate
         a customized itinerary based on your preferences.
       </p>
       <div className="mt-20 flex flex-col gap-10">
         <div>
-          <h2 className="text-xl my-3 font-medium text-gray-900">
+          <h2 className="text-xl my-3 font-medium text-gray-900 dark:text-gray-100">
             What is your destination of choice?
           </h2>
           <GooglePlacesAutocomplete
@@ -368,7 +383,7 @@ function CreateTrip() {
           />
         </div>
         <div>
-          <h2 className="text-xl my-3 font-medium text-gray-900">
+          <h2 className="text-xl my-3 font-medium text-gray-900 dark:text-gray-100">
             How many days are you planning your trip?
           </h2>
           <Input
@@ -380,26 +395,26 @@ function CreateTrip() {
         </div>
       </div>
       <div>
-        <h2 className="text-xl my-3 font-medium text-gray-900">What is your budget?</h2>
+        <h2 className="text-xl my-3 font-medium text-gray-900 dark:text-gray-100">What is your budget?</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-5">
           {SelectBudgetOptions.map((item, index) => (
             <div
               key={index}
               onClick={() => handleInputChange("budget", item.title)}
               className={`p-4 border cursor-pointer rounded-lg hover:shadow-lg transition-shadow
-              ${formData?.budget === item.title && "shadow-lg border-black"}
+              ${formData?.budget === item.title && "shadow-lg border-black dark:border-gray-100"}
               `}
             >
-              <h2 className="text-4xl text-gray-900">{item.icon}</h2>
-              <h2 className="font-bold text-lg text-gray-900">{item.title}</h2>
-              <h2 className="text-sm text-gray-600">{item.desc}</h2>
+              <h2 className="text-4xl text-gray-900 dark:text-gray-100">{item.icon}</h2>
+              <h2 className="font-bold text-lg text-gray-900 dark:text-gray-100">{item.title}</h2>
+              <h2 className="text-sm text-gray-600 dark:text-gray-400">{item.desc}</h2>
             </div>
           ))}
         </div>
       </div>
 
       <div>
-        <h2 className="text-xl my-3 font-medium text-gray-900">
+        <h2 className="text-xl my-3 font-medium text-gray-900 dark:text-gray-100">
           Who do you plan on traveling with on your next adventure?
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-5">
@@ -408,12 +423,12 @@ function CreateTrip() {
               key={index}
               onClick={() => handleInputChange("traveler", item.people)}
               className={`p-4 border cursor-pointer rounded-lg hover:shadow-lg transition-shadow
-              ${formData?.traveler === item.people && 'shadow-lg border-black'}
+              ${formData?.traveler === item.people && 'shadow-lg border-black dark:border-gray-100'}
               `}
             >
-              <h2 className="text-4xl text-gray-900">{item.icon}</h2>
-              <h2 className="font-bold text-lg text-gray-900">{item.title}</h2>
-              <h2 className="text-sm text-gray-600">{item.desc}</h2>
+              <h2 className="text-4xl text-gray-900 dark:text-gray-100">{item.icon}</h2>
+              <h2 className="font-bold text-lg text-gray-900 dark:text-gray-100">{item.title}</h2>
+              <h2 className="text-sm text-gray-600 dark:text-gray-400">{item.desc}</h2>
             </div>
           ))}
         </div>
@@ -436,11 +451,13 @@ function CreateTrip() {
           <DialogHeader>
             <DialogDescription>
               <img src="/logo.svg" alt="Logo" className="mx-auto" />
-              <h2 className="font-bold text-lg mt-7 text-center">Sign In with Google</h2>
-              <p className="text-center">Sign In to the app with Google authentication securely</p>
+              <h2 className="font-bold text-lg mt-7 text-center text-gray-900 dark:text-gray-100">
+                Sign In with Google
+              </h2>
+              <p className="text-center text-gray-600 dark:text-gray-400">Sign In to the app with Google authentication securely</p>
               <Button
                 onClick={login}
-                className="w-full mt-5 flex gap-4 items-center justify-center"
+                className="w-full mt-5 flex gap-4 items-center justify-center bg-gray-900 dark:bg-gray-100 text-white dark:text-black"
               >
                 <FcGoogle className="h-7 w-7" />Sign In with Google
               </Button> 

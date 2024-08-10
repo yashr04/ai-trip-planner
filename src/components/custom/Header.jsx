@@ -5,16 +5,25 @@
 // import { useNavigate } from 'react-router-dom';
 // import { FcGoogle } from "react-icons/fc";
 // import { Dialog, DialogContent, DialogDescription, DialogHeader } from "@/components/ui/dialog";
-// import { FaBars, FaTimes } from 'react-icons/fa'; // Import hamburger and close icons
+// import { FaBars, FaTimes } from 'react-icons/fa';
+// import { FiSun, FiMoon } from 'react-icons/fi'; // Import sun and moon icons
 // import axios from 'axios';
 
 // function Header() {
 //   const user = JSON.parse(localStorage.getItem('user'));
 //   const [openDialog, setOpenDialog] = useState(false);
 //   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+//   const [isDarkMode, setIsDarkMode] = useState(false);
 
 //   useEffect(() => {
 //     console.log(user);
+
+//     // Check if the user has a preferred theme
+//     const storedTheme = localStorage.getItem('theme');
+//     if (storedTheme) {
+//       setIsDarkMode(storedTheme === 'dark');
+//       document.documentElement.classList.toggle('dark', storedTheme === 'dark');
+//     }
 //   }, []);
 
 //   const login = useGoogleLogin({
@@ -47,13 +56,36 @@
 //     window.location.href = 'http://localhost:5173/';
 //   };
 
+//   // Function to toggle dark mode
+//   const toggleDarkMode = () => {
+//     const newTheme = isDarkMode ? 'light' : 'dark';
+//     setIsDarkMode(!isDarkMode);
+//     document.documentElement.classList.toggle('dark', !isDarkMode);
+//     localStorage.setItem('theme', newTheme);
+//   };
+
 //   return (
-//     <div className="p-3 shadow-sm flex justify-between items-center px-5 sticky top-0 bg-white z-10">
-//       <div className="flex items-center gap-2">
-//         <img src='/logo.svg' className="h-8 w-auto" />
-//         <span className="text-xl font-bold">AI Trip Planner</span>
-//       </div>
+//     <div className="p-3 shadow-sm flex justify-between items-center px-5 sticky top-0 bg-white dark:bg-gray-900 z-10">
+//       <a href="http://localhost:5173" className="flex items-center gap-2">
+//         <img src='/logo.svg' className="h-8 w-auto" alt="Logo" />
+//         <span className="text-xl font-bold text-black dark:text-white">AI Trip Planner</span>
+//       </a>
 //       <div className="flex items-center">
+//         <div className="hidden md:flex items-center mr-4">
+//           <FiSun className="text-xl text-black dark:text-white" />
+//           <button
+//             onClick={toggleDarkMode}
+//             className="relative inline-flex items-center justify-center h-6 w-11 rounded-full bg-gray-300 dark:bg-gray-700 mx-2 focus:outline-none transition-colors duration-300"
+//           >
+//             <span className="sr-only">Toggle Dark Mode</span>
+//             <span
+//               className={`absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white dark:bg-gray-900 transition-transform duration-300 ${
+//                 isDarkMode ? 'transform translate-x-5' : ''
+//               }`}
+//             />
+//           </button>
+//           <FiMoon className="text-xl text-black dark:text-white" />
+//         </div>
 //         {user ? (
 //           <>
 //             <div className="hidden md:flex items-center gap-3">
@@ -65,7 +97,7 @@
 //               </a>
 //               <Popover>
 //                 <PopoverTrigger>
-//                   <img src={user?.picture} className="h-8 w-8 rounded-full"/>
+//                   <img src={user?.picture} className="h-8 w-8 rounded-full" alt="User Avatar" />
 //                 </PopoverTrigger>
 //                 <PopoverContent className="p-2 w-50">
 //                   <h2
@@ -83,7 +115,7 @@
 //               </button>
 //               <Popover>
 //                 <PopoverTrigger>
-//                   <img src={user?.picture} className="h-8 w-8 rounded-full ml-3"/>
+//                   <img src={user?.picture} className="h-8 w-8 rounded-full ml-3" alt="User Avatar" />
 //                 </PopoverTrigger>
 //                 <PopoverContent className="p-2 w-50">
 //                   <h2
@@ -101,16 +133,13 @@
 //         )}
 //       </div>
 //       {isMobileMenuOpen && user && (
-//         <div className="md:hidden flex flex-col items-center bg-white absolute top-12 right-0 left-0 shadow-lg">
+//         <div className="md:hidden flex flex-col items-center bg-white dark:bg-gray-900 absolute top-12 right-0 left-0 shadow-lg">
 //           <a href='/create-trip' className="w-full text-center p-3 border-b">
 //             Create Trip
 //           </a>
 //           <a href='/my-trips' className="w-full text-center p-3 border-b">
 //             My Trips
 //           </a>
-//           {/* <button className="w-full text-center p-3 text-red-600" onClick={handleLogout}>
-//             Logout
-//           </button> */}
 //         </div>
 //       )}
 //       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
@@ -151,21 +180,27 @@ import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import { useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { Dialog, DialogContent, DialogDescription, DialogHeader } from "@/components/ui/dialog";
-import { FaBars, FaTimes } from 'react-icons/fa'; // Import hamburger and close icons
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { FiSun, FiMoon } from 'react-icons/fi';
 import axios from 'axios';
 
 function Header() {
   const user = JSON.parse(localStorage.getItem('user'));
   const [openDialog, setOpenDialog] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    console.log(user);
+    // Check if the user has a preferred theme
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      setIsDarkMode(storedTheme === 'dark');
+      document.documentElement.classList.toggle('dark', storedTheme === 'dark');
+    }
   }, []);
 
   const login = useGoogleLogin({
     onSuccess: (tokenInfo) => {
-      console.log(tokenInfo);
       GetUserProfile(tokenInfo);
     },
     onError: (error) => console.log(error),
@@ -178,7 +213,6 @@ function Header() {
         Accept: 'application/json',
       },
     }).then((resp) => {
-      console.log(resp);
       localStorage.setItem('user', JSON.stringify(resp.data));
       setOpenDialog(false);
       window.location.reload();
@@ -190,18 +224,54 @@ function Header() {
   const handleLogout = () => {
     googleLogout();
     localStorage.clear();
-    window.location.href = 'https://ai-trip-planner-vnmr.vercel.app/';
+    window.location.href = '/';
+  };
+
+  const toggleDarkMode = () => {
+    const newTheme = isDarkMode ? 'light' : 'dark';
+    setIsDarkMode(!isDarkMode);
+    document.documentElement.classList.toggle('dark', !isDarkMode);
+    localStorage.setItem('theme', newTheme);
   };
 
   return (
-    <div className="p-3 shadow-sm flex justify-between items-center px-5 sticky top-0 bg-white z-10">
-      <a href="https://ai-trip-planner-vnmr.vercel.app" className="flex items-center gap-2">
-        <img src='/logo.svg' className="h-8 w-auto" />
-        <span className="text-xl font-bold">AI Trip Planner</span>
+    <div className="p-3 shadow-sm flex justify-between items-center px-5 sticky top-0 bg-white dark:bg-gray-900 z-10">
+      <a href="/" className="flex items-center gap-2">
+        <img src='/logo.svg' className="h-8 w-auto" alt="Logo" />
+        <span className="text-xl font-bold text-black dark:text-white">AI Trip Planner</span>
       </a>
       <div className="flex items-center">
+        {/* Dark Mode Toggle for Larger Screens */}
+        <div className="hidden md:flex items-center mr-4">
+          <FiSun className="text-xl text-black dark:text-white" />
+          <button
+            onClick={toggleDarkMode}
+            className="relative inline-flex items-center justify-center h-6 w-11 rounded-full bg-gray-300 dark:bg-gray-700 mx-2 focus:outline-none transition-colors duration-300"
+          >
+            <span className="sr-only">Toggle Dark Mode</span>
+            <span
+              className={`absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white dark:bg-gray-900 transition-transform duration-300 ${
+                isDarkMode ? 'transform translate-x-5' : ''
+              }`}
+            />
+          </button>
+          <FiMoon className="text-xl text-black dark:text-white" />
+        </div>
+        
+        {/* Dark Mode Icon Button for Smaller Screens */}
+        <div className="flex md:hidden items-center mr-4">
+          <button onClick={toggleDarkMode} className="focus:outline-none">
+            {isDarkMode ? (
+              <FiMoon className="text-xl text-black dark:text-white" />
+            ) : (
+              <FiSun className="text-xl text-black dark:text-white" />
+            )}
+          </button>
+        </div>
+
         {user ? (
           <>
+            {/* Navigation Links for Larger Screens */}
             <div className="hidden md:flex items-center gap-3">
               <a href='/create-trip'>
                 <Button variant="outline" className="rounded-full px-4 py-2 text-sm">+ Create Trip</Button>
@@ -211,7 +281,7 @@ function Header() {
               </a>
               <Popover>
                 <PopoverTrigger>
-                  <img src={user?.picture} className="h-8 w-8 rounded-full"/>
+                  <img src={user?.picture} className="h-8 w-8 rounded-full" alt="User Avatar" />
                 </PopoverTrigger>
                 <PopoverContent className="p-2 w-50">
                   <h2
@@ -223,13 +293,15 @@ function Header() {
                 </PopoverContent>
               </Popover>
             </div>
+
+            {/* Mobile Menu Toggle */}
             <div className="md:hidden flex items-center">
               <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                 {isMobileMenuOpen ? <FaTimes className="h-6 w-6" /> : <FaBars className="h-6 w-6" />}
               </button>
               <Popover>
                 <PopoverTrigger>
-                  <img src={user?.picture} className="h-8 w-8 rounded-full ml-3"/>
+                  <img src={user?.picture} className="h-8 w-8 rounded-full ml-3" alt="User Avatar" />
                 </PopoverTrigger>
                 <PopoverContent className="p-2 w-50">
                   <h2
@@ -246,8 +318,10 @@ function Header() {
           <Button onClick={() => setOpenDialog(true)} className="px-4 py-2 text-sm">Sign In</Button>
         )}
       </div>
+
+      {/* Mobile Menu Links */}
       {isMobileMenuOpen && user && (
-        <div className="md:hidden flex flex-col items-center bg-white absolute top-12 right-0 left-0 shadow-lg">
+        <div className="md:hidden flex flex-col items-center bg-white dark:bg-gray-900 absolute top-12 right-0 left-0 shadow-lg">
           <a href='/create-trip' className="w-full text-center p-3 border-b">
             Create Trip
           </a>
@@ -256,6 +330,7 @@ function Header() {
           </a>
         </div>
       )}
+
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
         <DialogContent>
           <DialogHeader>
