@@ -80,7 +80,7 @@ function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-800 text-center">
-          <p className="text-gray-400">&copy; {new Date().getFullYear()} AI Trip Planner App. All rights reserved. - Created by Yash Raj</p>
+          <p className="text-gray-400">&copy; {new Date().getFullYear()} AI Trip Planner. All rights reserved. - Created by Yash Raj</p>
         </div>
       </div>
     </footer>
